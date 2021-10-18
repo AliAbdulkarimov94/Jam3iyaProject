@@ -1,24 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import NavBar from './Components/NavBar';
+import SignUpModal from './Components/SignUpModal';
+import Home from "./Components/Home";
+import JamiyaList from "./Components/JamiyaList";
+import { Route, Switch } from "react-router";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <NavBar />
+      <SignUpModal />
+
+      
+  
+
+    <header className="header">
+        <img src={logo} className="img" alt="logo" />
+        <p> Ghadah Bu Dhhair</p>
+        <h1 className="title"> Ghadah Bu Dhhair </h1>
       </header>
-    </div>
+      </div>
+      
+   
   );
 }
 

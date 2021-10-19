@@ -1,93 +1,65 @@
-import React, { useState } from "react";
-
-import { Form, Modal, Button } from "react-bootstrap";
-import authStore from "../stores/authStore";
-
+import React from 'react'
+import { useState } from 'react';
+import {Button , Modal,Form} from "react-bootstrap"
 
 
-export default function SignUpModal(props) {
-    const[user, setUser] = useState({
-        username: "",
-        password: "",
-        email: "",
-    });
+function SignUpModal() {
+  const [show, setShow] = useState(false);
 
-    const handleChange = (e) => {
-        setUser({...user, [e.target.name]: e.target.value });
-    };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [user,setUser] = useState({username : "",email :"" ,password : "" })
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        authStore.signup(user)
+  const handleChange = (event) => {
+    setUser({...user})
+  }
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        sign up 
+      </Button>
 
-        props.closeModal();
-    };
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Sign Up</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><Form>
 
-    return (
-        <Modal
-      show={props.isOpen}
-      onHide={props.closeModal}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Signup</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3">
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              type="text"
-              onChange={handleChange}
-              name="username"
-              placeholder="Enter your username"
-            />
-          </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Label>Username</Form.Label>
+    <Form.Control name="username" type="text" placeholder="Enter Username" />
+  </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              onChange={handleChange}
-              name="password"
-              placeholder="Enter your password"
-            />
-          </Form.Group>
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="warning" onClick={handleSubmit}>
-          {props.signIn ? "Sign in" : "Sign up"}
-        </Button>
-        <Button variant="warning" onClick={props.closeModal}>
-          Close
-        </Button>
-      </Modal.Footer>
-    </Modal>
+
+
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Label>Email address</Form.Label>
+    <Form.Control name="email "type="email" placeholder="Enter email" />
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control name="password" type="password" placeholder="Password" />
+  </Form.Group>
+  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+    <Form.Check type="checkbox" label="Check me out" />
+  </Form.Group>
+  <Button variant="primary" type="submit">
+    Submit
+  </Button>
+</Form></Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }
-//         <div>
-//       <form className="form-page" onSubmit={handleSubmit}>
-//         <input
-//           name="username"
-//           required
-//           placeholder="User Name"
-//           onChange={handleChange}
-//         />
-//         <input
-//           name="password"
-//           required
-//           placeholder="Password"
-//           onChange={handleChange}
-//         />
-//       </form>
-//     </div>
-        
-
-//     )
-//  }
-    
 
 
+export default SignUpModal

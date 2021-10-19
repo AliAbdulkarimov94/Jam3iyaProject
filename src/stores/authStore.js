@@ -26,6 +26,16 @@ user = null;
         console.log(error);
       }
     };
+
+    signin = async (userData) => {
+      try {
+        const response = await api.post("/signin", userData);
+        this.setUser(response.data.token);
+        console.log("authStore -> signin -> response.data", response.data);
+      } catch (error) {
+        console.log("authStore -> signin -> error", error);
+      }
+    };
   
     logout = () => {
       delete api.defaults.headers.common.Authorization;

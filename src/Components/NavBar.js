@@ -8,7 +8,6 @@ import { Link, NavLink } from "react-router-dom";
 
 
 function NavBar() {
-    const [signupIsOpen, setSignupIsOpen] = useState(false);
     const [signIn, setSignIn] = useState(false);
 
     return (
@@ -50,29 +49,11 @@ function NavBar() {
 ) : (
 <>
 <li class="nav-item">
-        <Button
-          onClick={() => {
-            setSignupIsOpen(true);
-            setSignIn(false);
-          }}
-        >
-          Sign up
-        </Button>
+    <SignUpModal/>
       </li>
       <li>
-        <Button
-          onClick={() => {
-            setSignupIsOpen(true);
-            setSignIn(true);
-          }}
-        >
-          Sign in
-        </Button>
-        <SignUpModal
-          signIn={signIn}
-          closeModal={() => setSignupIsOpen(false)}
-          isOpen={signupIsOpen}
-        />
+        
+        
 
         
       </li>

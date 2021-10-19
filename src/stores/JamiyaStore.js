@@ -1,18 +1,17 @@
 import { makeAutoObservable } from "mobx";
-import axios from "axios";
+import api from "./api";
+
 
 class JamiyaStore {
   constructor() {
     makeAutoObservable(this);
   }
 
-  jamiya = [];
+  jamiyat = [];
 
   fetchJamiya = async () => {
-    const response = await axios.get(
-      "https://coded-miniproject-jam3ya-be.herokuapp.com/jam3ya%22"
-    );
-    this.jamiya = response.data;
+    const response = await api.get("/jam3ya");
+    this.jamiyat = response.data;
   };
 }
 

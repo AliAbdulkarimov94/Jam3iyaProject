@@ -5,14 +5,14 @@ import SignUpModal from './Components/SignUpModal';
 import Home from "./Components/Home";
 import JamiyaList from "./Components/JamiyaList";
 import { Route, Switch } from "react-router";
+import SigninModal from './Components/SigninModal';
 
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <SignUpModal />
-
+     
       
   
 

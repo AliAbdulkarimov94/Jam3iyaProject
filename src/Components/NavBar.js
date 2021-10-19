@@ -1,69 +1,41 @@
 import React from "react";
-import { useState } from "react";
-import { Button } from "react-bootstrap";
-import SignUpModal from "./SignUpModal";
+import { Navbar, Nav, Container,Button } from "react-bootstrap";
+import { observer } from "mobx-react-lite";
 import authStore from "../stores/authStore";
-import { observer} from "mobx-react";
-import { Link, NavLink } from "react-router-dom";
+import SigninModal from "./SigninModal";
+import SignUpModal from "./SignUpModal";
 
 
 function NavBar() {
-    const [signIn, setSignIn] = useState(false);
+  return (
+    <Navbar>
+      <Container>
+        <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          {authStore.user ? (
+            <Navbar.Text>
+              Signed in as: <a href="#login">{authStore.user.username}</a>
+              <Button onClick = {( ) => {authStore.logout()}} variant="outline-primary"> Sign Out </Button>
 
-    return (
-       <>
-       <button 
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        >
-        </button>
-    
-        <div
-        class="collapse navbar-collapse sub-menu-bar"
-        id="navbarSupportedContent"
-                  >
-        <ul id="nav" class="navbar-nav ml-auto">
-        <li class="nav-item">
-        <Link to="/">Home</Link>
-    </li>
-    <li class="nav-item">
-    <NavLink to="/courses">Courses</NavLink>
-    </li>
-        
-        {authStore.user ? (
-        <>
-        <li class="nav-item">
-            Welcome {authStore.user.username}
-            </li>
-            <li class="nav-item">
-                <Button onClick={() => authStore.logout()}>
-                    Logout
-                    </Button>{" "}
-        </li>
-    </>
-) : (
-<>
-<li class="nav-item">
-    <SignUpModal/>
-      </li>
-      <li>
-        
-        
+            </Navbar.Text>
 
-        
-      </li>
-      </>
-)}
-</ul>
-</div>
-    </>                       
-                 
-    )
+          ) : (
+            <>
+              <Nav.Link>
+                
+                <SignUpModal />
+              </Nav.Link>
+              <Nav.Link>
+                
+                <SigninModal />
+              </Nav.Link>
+            </>
+          )}
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
 
 export default observer(NavBar);

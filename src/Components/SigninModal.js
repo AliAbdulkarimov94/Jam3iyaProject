@@ -11,7 +11,8 @@ function SigninModal () {
   const handleShow = () => setShow(true);
   const [user,setUser] = useState({
     username : "",
-    password : "" })
+    password : "" 
+})
 
   const handleChange = (event) => {
     setUser({...user,[event.target.name]: event.target.value });
@@ -46,7 +47,6 @@ function SigninModal () {
     <Form.Control onChange={handleChange} name="password" type="password" placeholder="Password" required/>
   </Form.Group>
   <Form.Group className="mb-3" controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
   </Form.Group>
   
 </Form></Modal.Body>

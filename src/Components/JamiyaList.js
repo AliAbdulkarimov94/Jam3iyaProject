@@ -1,30 +1,28 @@
 import React from 'react'
 import JamiyaItem from './JamiyaItem'
-import JamiyaStore from '../stores/JamiyaStore'; 
+import JamiyaStore from '../stores/JamiyaStore';
 import { useState } from 'react';
 import { observer } from "mobx-react"
 
 
 function JamiyaList(props) {
 
-   const [isOpen, setIsOpen] = useState(false);
+if (JamiyaStore.isLoading) return (
+    <p> Loading </p>
+)
 
-  const closeModal = () => setIsOpen(false);
+const jamiyaList = JamiyaStore.jamiyat.map((jamiya) => ( 
+<JamiyaItem jamiya  ={jamiya}  key ={jamiya.id} />
 
-  const openModal = () => setIsOpen(true);
-
-
-    const jamiyaList = JamiyaStore.jamiyat.map((jamiya) => ( <JamiyaItem jamiya  = {jamiya}  key = {jamiya.id} />
-    ));
+));
 
     return (
 
         <div> 
-        {JamiyaItem} 
+        {jamiyaList} 
         </div>
-
 
     ); 
 }
 
-export default observer (JamiyaList)
+export default observer(JamiyaList);

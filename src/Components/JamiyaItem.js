@@ -1,30 +1,30 @@
 import React from 'react'
-import { useState} from 'react'
+import { observer } from 'mobx-react-lite';
 import { Button } from 'react-bootstrap';
-import JamiyaStore from '../stores/JamiyaStore'; 
 
-    function JamiyaItem(props) {
 
-    const jamiyat = props.jamiyat;
+function JamiyaItem(props) {
 
-    const [isOpen, setIsOpen] = useState(false);
+const jamiya = props.jamiya;
+    // console.log(jamiyat);
+
+    // const [isOpen, setIsOpen] = useState(false);
   
-    const closeModal = () => setIsOpen(false);
+    // const closeModal = () => setIsOpen(false);
   
-    const openModal = () => setIsOpen(true);
+    // const openModal = () => setIsOpen(true);
 
-    const handleDelete = () => {props.deleteRoom(jamiya.id);
+    // const handleDelete = () => {props.deleteRoom(jamiyat.id);
 
     return (
 
-        <>
+        <div>
+            <p> { jamiya.title } </p>
+        </div>
+        // <Button className = "delete" onClick ={handleDelete}>Delete</Button>
+      
+    ); 
+}
 
-        <Button className = "delete" onClick ={handleDelete}>Delete</Button>
 
-        {/* <Button className = "update" onClick = {openModal}>Update</Button> */}
-       
-        </>
-    )
-} ; 
-
-export default JamiyaItem 
+export default observer(JamiyaItem);

@@ -23,8 +23,6 @@ function SignUpModal() {
   };
 
 
-
-
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -54,7 +52,7 @@ function SignUpModal() {
     <Form.Control onChange={handleChange} name="password" type="password" placeholder="Password" required/>
   </Form.Group>
   <Form.Group className="mb-3" controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
+ 
   </Form.Group>
   
 </Form></Modal.Body>

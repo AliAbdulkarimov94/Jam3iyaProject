@@ -1,10 +1,9 @@
 import React from "react";
-import { Navbar, Nav, Container,Button } from "react-bootstrap";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { observer } from "mobx-react-lite";
 import authStore from "../stores/authStore";
 import SigninModal from "./SigninModal";
 import SignUpModal from "./SignUpModal";
-
 
 function NavBar() {
   return (
@@ -16,18 +15,22 @@ function NavBar() {
           {authStore.user ? (
             <Navbar.Text>
               Signed in as: <a href="#login">{authStore.user.username}</a>
-              <Button onClick = {( ) => {authStore.logout()}} variant="outline-primary"> Sign Out </Button>
-
+              <Button
+                onClick={() => {
+                  authStore.logout();
+                }}
+                variant="outline-primary"
+              >
+                {" "}
+                Sign Out{" "}
+              </Button>
             </Navbar.Text>
-
           ) : (
             <>
               <Nav.Link>
-                
                 <SignUpModal />
               </Nav.Link>
               <Nav.Link>
-                
                 <SigninModal />
               </Nav.Link>
             </>

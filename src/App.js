@@ -1,30 +1,45 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import NavBar from './Components/NavBar';
-import SignUpModal from './Components/SignUpModal';
-import Home from "./Components/Home";
+// import SignUpModal from './Components/SignUpModal';
 import JamiyaList from "./Components/JamiyaList";
-import { Route, Switch } from "react-router";
-import SigninModal from './Components/SigninModal';
+// import SigninModal from './Components/SigninModal';
+import { useState } from 'react';
+// import { Modal } from 'react-bootstrap';
+import Profile from './Components/Profile';
+import { observer } from 'mobx-react-lite';
+import JamiyaStore from './stores/JamiyaStore';
 
 
 function App() {
+
+  const [isopen, setIsOpen] = useState(false);
+
+  // const openModal = () => setIsOpen(true)
+  // const closeModal =  () => setIsOpen(false)
   return (
     <div className="App">
       <NavBar />
-     
-      
-  
+      <Profile />;
 
-    <header className="header">
+      {/* <button className="btn-info" onClick={openModal}>
+        Open Sign Up Modal
+        </button>
+        <Modal>
+
+          </Modal> */}
+        <JamiyaList />
+     
+    {/* <header className="header">
         <img src={logo} className="img" alt="logo" />
-        <p> Ghadah Bu Dhhair</p>
-        <h1 className="title"> Ghadah Bu Dhhair </h1>
-      </header>
-      </div>
+        <p> Welcome, User. </p>
+        <h1 className="title"> WELCOME </h1>
+        </header> */}
+      </div> 
       
    
   );
 }
+        
 
-export default App;
+export default observer(App);
